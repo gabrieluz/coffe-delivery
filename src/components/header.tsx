@@ -21,7 +21,7 @@ export default function Header() {
 					className="bg-yellow-light text-yellow-dark p-2 h-fit w-fit rounded-md relative"
 				>
 					<ShoppingCart size={22} />
-					<p className="absolute -top-2 -right-1 bg-yellow-dark text-white rounded-full px-1 py-0">
+					<p className="absolute -top-2 -right-2 text-sm leading-[0.5rem] bg-yellow-dark text-white rounded-full p-1">
 						{total}
 					</p>
 				</Link>

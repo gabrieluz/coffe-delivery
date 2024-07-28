@@ -25,42 +25,44 @@ type Actions = {
 	subtractCoffee: (id: number) => void;
 };
 
-export const useCoffees = create<State & Actions>((set, get) => ({
+export const useCoffees = create<State & Actions>(set => ({
 	shoppingCard: [],
 	coffeesList: [...coffeesList],
 	total: 0,
 	addCoffee: id => {
-		set(state => ({
-			coffeesList: state.coffeesList.map(coffee =>
+		set(coffeeState => {
+			const coffeesList = coffeeState.coffeesList.map(coffee =>
 				coffee.id === id
 					? { ...coffee, qtd: coffee.qtd < 0 ? 0 : coffee.qtd + 1 }
 					: coffee
-			),
-		}));
+			);
 
-		set({
-			shoppingCard: get().coffeesList.filter(item => item.qtd > 0),
-			total: get().coffeesList.reduce(
+			const shoppingCard = coffeeState.coffeesList.filter(item => item.qtd > 0);
+
+			const total = coffeesList.reduce(
 				(total, item) => (item.qtd > 0 ? total + item.qtd : total),
 				0
-			),
+			);
+
+			return { coffeesList, shoppingCard, total };
 		});
 	},
 	subtractCoffee: id => {
-		set(state => ({
-			coffeesList: state.coffeesList.map(coffee =>
+		set(coffeeState => {
+			const coffeesList = coffeeState.coffeesList.map(coffee =>
 				coffee.id === id
 					? { ...coffee, qtd: coffee.qtd <= 0 ? 0 : coffee.qtd - 1 }
 					: coffee
-			),
-		}));
+			);
 
-		set({
-			shoppingCard: get().coffeesList.filter(item => item.qtd > 0),
-			total: get().coffeesList.reduce(
+			const shoppingCard = coffeeState.coffeesList.filter(item => item.qtd > 0);
+
+			const total = coffeesList.reduce(
 				(total, item) => (item.qtd > 0 ? total + item.qtd : total),
 				0
-			),
+			);
+
+			return { coffeesList, shoppingCard, total };
 		});
 	},
 }));
