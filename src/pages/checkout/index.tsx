@@ -1,7 +1,14 @@
+import { useCoffees } from "../../service/coffees";
+
 export default function Checkout() {
+	const { shoppingCard } = useCoffees();
 	return (
 		<div>
-			<h1>Home Bom dia</h1>
+			{shoppingCard.map((item, index) => (
+				<div key={index}>
+					<p>{item.name} </p>
+				</div>
+			))}
 		</div>
 	);
 }

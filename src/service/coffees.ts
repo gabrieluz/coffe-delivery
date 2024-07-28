@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { coffeesList } from "../mocks/coffeesList";
 
-export interface ICoffees {
+export interface ICoffee {
 	id: number;
 
 	name: string;
@@ -10,25 +10,57 @@ export interface ICoffees {
 	tags: Array<string>;
 
 	img: string;
+
+	qtd: number;
 }
 
 type State = {
-	shoppingCard: Array<ICoffees>;
-	coffeesList: Array<ICoffees>;
+	total: number;
+	shoppingCard: Array<ICoffee>;
+	coffeesList: Array<ICoffee>;
 };
 
 type Actions = {
 	addCoffee: (id: number) => void;
+	subtractCoffee: (id: number) => void;
 };
 
 export const useCoffees = create<State & Actions>((set, get) => ({
 	shoppingCard: [],
 	coffeesList: [...coffeesList],
+	total: 0,
 	addCoffee: id => {
-		const coffees = get().shoppingCard;
+		set(state => ({
+			coffeesList: state.coffeesList.map(coffee =>
+				coffee.id === id
+					? { ...coffee, qtd: coffee.qtd < 0 ? 0 : coffee.qtd + 1 }
+					: coffee
+			),
+		}));
 
-		const newCoffee = coffeesList.find(e => e.id === id) as ICoffees;
+		set({
+			shoppingCard: get().coffeesList.filter(item => item.qtd > 0),
+			total: get().coffeesList.reduce(
+				(total, item) => (item.qtd > 0 ? total + item.qtd : total),
+				0
+			),
+		});
+	},
+	subtractCoffee: id => {
+		set(state => ({
+			coffeesList: state.coffeesList.map(coffee =>
+				coffee.id === id
+					? { ...coffee, qtd: coffee.qtd <= 0 ? 0 : coffee.qtd - 1 }
+					: coffee
+			),
+		}));
 
-		set({ shoppingCard: [...coffees, newCoffee] });
+		set({
+			shoppingCard: get().coffeesList.filter(item => item.qtd > 0),
+			total: get().coffeesList.reduce(
+				(total, item) => (item.qtd > 0 ? total + item.qtd : total),
+				0
+			),
+		});
 	},
 }));

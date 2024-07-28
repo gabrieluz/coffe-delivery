@@ -1,7 +1,7 @@
 import { assets } from "../assets";
-import { ICoffees } from "../service/coffees";
+import { ICoffee } from "../service/coffees";
 
-export const coffeesList: Array<ICoffees> = [
+export const coffeesList: Array<ICoffee> = [
 	{
 		id: 1,
 		name: "Expresso Tradicional",
@@ -9,6 +9,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Expresso,
 		price: 9.99,
 		tags: ["Tradicional"],
+		qtd: 0,
 	},
 	{
 		id: 2,
@@ -17,6 +18,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Americano,
 		price: 9.99,
 		tags: ["Tradicional"],
+		qtd: 0,
 	},
 	{
 		id: 3,
@@ -25,6 +27,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.ExpressoCremoso,
 		price: 9.99,
 		tags: ["Tradicional"],
+		qtd: 0,
 	},
 	{
 		id: 4,
@@ -33,6 +36,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.CafeGelado,
 		price: 9.99,
 		tags: ["Tradicional", "gelado"],
+		qtd: 0,
 	},
 	{
 		id: 5,
@@ -41,6 +45,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.CafeComLeite,
 		price: 9.99,
 		tags: ["Tradicional", "com leite"],
+		qtd: 0,
 	},
 	{
 		id: 6,
@@ -50,6 +55,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Latte,
 		price: 9.99,
 		tags: ["Tradicional", "com leite"],
+		qtd: 0,
 	},
 	{
 		id: 7,
@@ -59,6 +65,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Capuccino,
 		price: 9.99,
 		tags: ["Tradicional", "com leite"],
+		qtd: 0,
 	},
 	{
 		id: 8,
@@ -68,6 +75,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Macchiato,
 		price: 9.99,
 		tags: ["Tradicional", "com leite"],
+		qtd: 0,
 	},
 	{
 		id: 9,
@@ -76,6 +84,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Mochaccino,
 		price: 9.99,
 		tags: ["Tradicional", "com leite"],
+		qtd: 0,
 	},
 	{
 		id: 10,
@@ -84,6 +93,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.ChocolateQuente,
 		price: 9.99,
 		tags: ["especial", "com leite"],
+		qtd: 0,
 	},
 	{
 		id: 11,
@@ -93,6 +103,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Cubano,
 		price: 9.99,
 		tags: ["especial", "alcoólico", "gelado"],
+		qtd: 0,
 	},
 	{
 		id: 12,
@@ -101,6 +112,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Havaiano,
 		price: 9.99,
 		tags: ["especial"],
+		qtd: 0,
 	},
 	{
 		id: 13,
@@ -109,6 +121,7 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Arabe,
 		price: 9.99,
 		tags: ["especial"],
+		qtd: 0,
 	},
 	{
 		id: 14,
@@ -117,5 +130,6 @@ export const coffeesList: Array<ICoffees> = [
 		img: assets.coffees.Irlandês,
 		price: 9.99,
 		tags: ["especial", "alcoólico"],
+		qtd: 0,
 	},
 ];
