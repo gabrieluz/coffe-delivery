@@ -8,9 +8,9 @@ const Pages = () => {
 	return (
 		<>
 			<Header />
-			<div>
+			<main>
 				<Outlet />
-			</div>
+			</main>
 		</>
 	);
 };
