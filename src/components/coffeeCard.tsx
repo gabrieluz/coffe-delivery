@@ -6,7 +6,7 @@ interface coffee {
 }
 
 export default function CoffeeCard({ coffee }: coffee) {
-	const { addCoffee, subtractCoffee } = useCoffees();
+	const { updateCoffee } = useCoffees();
 
 	const { id, name, description, img, tags, price, qtd } = coffee;
 
@@ -37,11 +37,11 @@ export default function CoffeeCard({ coffee }: coffee) {
 				</div>
 				<div className="flex gap-2">
 					<div className="bg-button rounded-md p-2 flex gap-1 text-purple">
-						<button onClick={() => subtractCoffee(id)}>
+						<button disabled={qtd <= 0} onClick={() => updateCoffee(id, false)}>
 							<Minus size={14} />
 						</button>
 						<p className="text-title">{qtd}</p>
-						<button onClick={() => addCoffee(id)}>
+						<button disabled={qtd >= 99} onClick={() => updateCoffee(id, true)}>
 							<Plus size={14} />
 						</button>
 					</div>
