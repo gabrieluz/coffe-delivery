@@ -6,61 +6,63 @@ export default function CoffeeDetails() {
 		useCoffees();
 
 	return (
-		<aside className="flex flex-col gap-3 w-full">
+		<aside className="flex flex-col gap-3 w-fit">
 			<h5 className="text-subtitle font-bold text-lg">Cafés selecionados</h5>
 			<div className="rounded-shoppingCard flex flex-col gap-6 bg-card w-full p-5 sm:p-10 h-fit sm:w-[448px] ">
-				{shoppingCard.map((item, index) => (
-					<>
-						<div key={index} className="flex py-2">
-							<div className="flex w-full justify-between">
-								<div className="flex gap-5">
-									<img className="w-16 h-16" src={item.img} alt="" />
-									<div className="flex flex-col gap-2">
-										<p className="text-subtitle text-base font-Roboto font-normal">
-											{item.name}
-										</p>
-										<div className="flex gap-2">
-											<div className="bg-button rounded-md p-2  w-fit h-fit flex gap-1 text-purple">
-												<button
-													disabled={item.qtd <= 0}
-													onClick={() => updateCoffee(item.id, false)}
-												>
-													<Minus size={14} />
-												</button>
-												<p className="text-title font-Roboto text-base leading-4">
-													{item.qtd}
-												</p>
-												<button
-													disabled={item.qtd >= 99}
-													onClick={() => updateCoffee(item.id, true)}
-												>
-													<Plus size={14} />
-												</button>
-											</div>
-											<div className="bg-button rounded-md p-2 w-fit h-fit flex gap-1 text-purple ">
-												<button
-													disabled={item.qtd <= 0}
-													onClick={() => updateCoffee(item.id, false, true)}
-												>
-													<div className="flex items-center gap-1">
-														<Trash2 size={14} />
-														<p className="uppercase text-xs text-text">
-															Remover
-														</p>
-													</div>
-												</button>
+				<div className="max-h-detailsCard flex flex-col gap-6 overflow-y-auto ">
+					{shoppingCard.map((item, index) => (
+						<div key={index}>
+							<div className="flex py-2">
+								<div className="flex w-full justify-between">
+									<div className="flex gap-5">
+										<img className="w-16 h-16" src={item.img} alt="" />
+										<div className="flex flex-col gap-2">
+											<p className="text-subtitle text-base font-Roboto font-normal">
+												{item.name}
+											</p>
+											<div className="flex gap-2">
+												<div className="bg-button rounded-md p-2  w-fit h-fit flex gap-1 text-purple">
+													<button
+														disabled={item.qtd <= 0}
+														onClick={() => updateCoffee(item.id, false)}
+													>
+														<Minus size={14} />
+													</button>
+													<p className="text-title font-Roboto text-base leading-4">
+														{item.qtd}
+													</p>
+													<button
+														disabled={item.qtd >= 99}
+														onClick={() => updateCoffee(item.id, true)}
+													>
+														<Plus size={14} />
+													</button>
+												</div>
+												<div className="bg-button rounded-md p-2 w-fit h-fit flex gap-1 text-purple ">
+													<button
+														disabled={item.qtd <= 0}
+														onClick={() => updateCoffee(item.id, false, true)}
+													>
+														<div className="flex items-center gap-1">
+															<Trash2 size={14} />
+															<p className="uppercase text-xs text-text">
+																Remover
+															</p>
+														</div>
+													</button>
+												</div>
 											</div>
 										</div>
 									</div>
+									<p className="text-subtitle font-bold font-Roboto">
+										R$ {item.price}
+									</p>
 								</div>
-								<p className="text-subtitle font-bold font-Roboto">
-									R$ {item.price}
-								</p>
 							</div>
+							<hr className="w-full border-button" />
 						</div>
-						<hr className="w-full border-button" />
-					</>
-				))}
+					))}
+				</div>
 				<div className="flex flex-col gap-6">
 					<div className="flex flex-col gap-3">
 						<div className="flex justify-between">

@@ -28,7 +28,64 @@ type Actions = {
 };
 
 export const useCoffees = create<State & Actions>(set => ({
-	shoppingCard: [],
+	shoppingCard: [
+		{
+			id: 1,
+			name: "Expresso Tradicional",
+			description: "O tradicional café feito com água quente e grãos moídos",
+			img: "/src/assets/coffee/Expresso.png",
+			price: 9.99,
+			tags: ["Tradicional"],
+			qtd: 4,
+		},
+		{
+			id: 2,
+			name: "Expresso Americano",
+			description: "Expresso diluído, menos intenso que o tradicional",
+			img: "/src/assets/coffee/Americano.png",
+			price: 9.99,
+			tags: ["Tradicional"],
+			qtd: 4,
+		},
+		{
+			id: 3,
+			name: "Expresso Cremoso",
+			description: "Café expresso tradicional com espuma cremosa",
+			img: "/src/assets/coffee/Expresso%20Cremoso.png",
+			price: 9.99,
+			tags: ["Tradicional"],
+			qtd: 4,
+		},
+		{
+			id: 7,
+			name: "Capuccino",
+			description:
+				"Bebida com canela feita de doses iguais de café, leite e espuma",
+			img: "/src/assets/coffee/Capuccino.png",
+			price: 9.99,
+			tags: ["Tradicional", "com leite"],
+			qtd: 5,
+		},
+		{
+			id: 11,
+			name: "Cubano",
+			description:
+				"Drink gelado de café expresso com rum, creme de leite e hortelã",
+			img: "/src/assets/coffee/Cubano.png",
+			price: 9.99,
+			tags: ["especial", "alcoólico", "gelado"],
+			qtd: 3,
+		},
+		{
+			id: 14,
+			name: "Irlandês",
+			description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
+			img: "/src/assets/coffee/Irland%C3%AAs.png",
+			price: 9.99,
+			tags: ["especial", "alcoólico"],
+			qtd: 4,
+		},
+	],
 	coffeesList: [...coffeesList],
 	total: 0,
 	totalPrice: 0,
