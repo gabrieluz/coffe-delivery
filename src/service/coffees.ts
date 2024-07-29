@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { create } from "zustand";
 import { coffeesList } from "../mocks/coffeesList";
 
@@ -40,7 +41,7 @@ export const useCoffees = create<State & Actions>(set => ({
 					: coffee
 			);
 
-			const shoppingCard = coffeeState.coffeesList.filter(item => item.qtd > 0);
+			const shoppingCard = coffeesList.filter(item => item.qtd > 0);
 
 			const total = coffeesList.reduce(
 				(total, item) => (item.qtd > 0 ? total + item.qtd : total),

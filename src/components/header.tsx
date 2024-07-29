@@ -7,7 +7,7 @@ export default function Header() {
 	const { total } = useCoffees();
 
 	return (
-		<header className="bg-background w-full py-8 flex justify-center gap-8 items-center">
+		<header className="bg-background w-full py-8 flex justify-center sm:justify-between gap-8 items-center sm:px-40">
 			<Link to="/">
 				<img src={assets.Logo} alt="Logo" />
 			</Link>
