@@ -8,7 +8,7 @@ const Pages = () => {
 	return (
 		<>
 			<Header />
-			<main className="w-full min-h-screen max-h-full flex bg-background pb-10 sm:px-80">
+			<main className="w-full min-h-screen max-h-full flex bg-background pb-10 px-5 sm:px-80">
 				<Outlet />
 			</main>
 		</>

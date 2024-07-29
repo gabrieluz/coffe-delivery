@@ -17,26 +17,34 @@ export interface ICoffee {
 
 type State = {
 	total: number;
+	totalPrice: number;
+	shippingValue: number;
 	shoppingCard: Array<ICoffee>;
 	coffeesList: Array<ICoffee>;
 };
 
 type Actions = {
-	updateCoffee: (id: number, add: boolean) => void;
+	updateCoffee: (id: number, add: boolean, removeAll?: boolean) => void;
 };
 
 export const useCoffees = create<State & Actions>(set => ({
 	shoppingCard: [],
 	coffeesList: [...coffeesList],
 	total: 0,
+	totalPrice: 0,
+	shippingValue: 3.5,
 
-	updateCoffee: (id, add) => {
+	updateCoffee: (id, add, removeAll) => {
 		set(coffeeState => {
 			const coffeesList = coffeeState.coffeesList.map(coffee =>
 				coffee.id === id
 					? {
 							...coffee,
-							qtd: add ? coffee.qtd + 1 : coffee.qtd - 1,
+							qtd: add
+								? coffee.qtd + 1
+								: removeAll
+								? coffee.qtd - coffee.qtd
+								: coffee.qtd - 1,
 					  }
 					: coffee
 			);
@@ -48,7 +56,14 @@ export const useCoffees = create<State & Actions>(set => ({
 				0
 			);
 
-			return { coffeesList, shoppingCard, total };
+			const shippingValue = shoppingCard.length > 50 ? 0 : 3.5;
+
+			const totalPrice = shoppingCard.reduce(
+				(sum, item) => sum + item.qtd * item.price + shippingValue,
+				0
+			);
+
+			return { coffeesList, shoppingCard, total, totalPrice, shippingValue };
 		});
 	},
 }));
