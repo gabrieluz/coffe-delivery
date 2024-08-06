@@ -33,9 +33,6 @@ export default {
 			minHeight: {
 				mainWrapper: "calc(100vh - 104px) ",
 			},
-			maxHeight: {
-				detailsCard: "calc(100vh - 552px)",
-			},
 		},
 	},
 	plugins: [],

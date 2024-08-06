@@ -31,7 +31,7 @@ export default function Home() {
 
 	return (
 		<section className="w-full flex flex-col gap-4 justify-center items-center">
-			<aside className="flex flex-col sm:flex-row gap-14 justify-center items-center sm:py-12 w-full px-10">
+			<aside className="flex flex-col sm:flex-row gap-14 justify-center items-center sm:py-12 w-full sm:px-10">
 				<div className="flex flex-col gap-10">
 					<div className="flex flex-col gap-4">
 						<h1 className="text-title font-bold text-5xl">
@@ -43,8 +43,8 @@ export default function Home() {
 						</p>
 					</div>
 					<div className="grid sm:grid-cols-2 gap-5">
-						{benefits.map((item, index) => (
-							<div key={index} className="flex items-center gap-3">
+						{benefits.map(item => (
+							<div key={item.label} className="flex items-center gap-3">
 								<div
 									className={`${item.boxColor} p-2 rounded-full w-fit h-fit text-background`}
 								>
@@ -61,8 +61,8 @@ export default function Home() {
 			</aside>
 			<h3 className="text-subtitle text-3xl font-bold">Nossos cafés</h3>
 			<aside className="grid sm:grid-cols-4 gap-4 items-center justify-center">
-				{coffeesList.map((item, index) => (
-					<CoffeeCard coffee={item} key={index} />
+				{coffeesList.map(item => (
+					<CoffeeCard coffee={item} key={item.name} />
 				))}
 			</aside>
 		</section>

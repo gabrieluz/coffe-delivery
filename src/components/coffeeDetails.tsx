@@ -1,25 +1,34 @@
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useCoffees } from "../service/coffees";
+import { Link } from "react-router-dom";
+import { useAddress } from "../service/address";
 
 export default function CoffeeDetails() {
 	const { shoppingCard, totalPrice, shippingValue, updateCoffee } =
 		useCoffees();
 
+	const { address, paymentMethod } = useAddress();
+
 	return (
-		<aside className="flex flex-col gap-3 w-fit">
+		<aside className="flex flex-col gap-3 w-full">
 			<h5 className="text-subtitle font-bold text-lg">Cafés selecionados</h5>
-			<div className="rounded-shoppingCard flex flex-col gap-6 bg-card w-full p-5 sm:p-10 h-fit sm:w-[448px] ">
-				<div className="max-h-detailsCard flex flex-col gap-6 overflow-y-auto ">
-					{shoppingCard.map((item, index) => (
-						<div key={index}>
-							<div className="flex py-2">
-								<div className="flex w-full justify-between">
-									<div className="flex gap-5">
+			<div className="flex flex-col gap-6 bg-card p-5 w-full h-fit sm:p-10 sm:min-w-[448px] sm:max-w-[640px] rounded-shoppingCard">
+				<div className="flex flex-col overflow-y-auto">
+					{shoppingCard.map(item => (
+						<div key={item.name}>
+							<div className="flex py-4 divide-y">
+								<div className="flex w-full justify-between flex-row">
+									<div className="flex gap-2 sm:gap-5  w-full">
 										<img className="w-16 h-16" src={item.img} alt="" />
-										<div className="flex flex-col gap-2">
-											<p className="text-subtitle text-base font-Roboto font-normal">
-												{item.name}
-											</p>
+										<div className="flex flex-col gap-2  w-full">
+											<div className="flex justify-between w-full gap-2">
+												<p className="text-subtitle text-base font-Roboto font-normal">
+													{item.name}
+												</p>
+												<p className="text-subtitle font-bold font-Roboto min-w-fit h-fit">
+													R$ {item.price}
+												</p>
+											</div>
 											<div className="flex gap-2">
 												<div className="bg-button rounded-md p-2  w-fit h-fit flex gap-1 text-purple">
 													<button
@@ -54,9 +63,6 @@ export default function CoffeeDetails() {
 											</div>
 										</div>
 									</div>
-									<p className="text-subtitle font-bold font-Roboto">
-										R$ {item.price}
-									</p>
 								</div>
 							</div>
 							<hr className="w-full border-button" />
@@ -91,14 +97,18 @@ export default function CoffeeDetails() {
 						</div>
 					</div>
 
-					<button
-						disabled={shoppingCard.length <= 0}
-						className="bg-yellow w-full rounded-md py-3 disabled:cursor-no-drop"
-					>
-						<p className="text-white uppercase font-Roboto text-sm">
-							confirmar pedido
-						</p>
-					</button>
+					<Link to="/success">
+						<button
+							disabled={
+								shoppingCard.length <= 0 || !address.cep || !paymentMethod
+							}
+							className="bg-yellow w-full rounded-md py-3 disabled:cursor-no-drop"
+						>
+							<p className="text-white uppercase font-Roboto text-sm">
+								confirmar pedido
+							</p>
+						</button>
+					</Link>
 				</div>
 			</div>
 		</aside>

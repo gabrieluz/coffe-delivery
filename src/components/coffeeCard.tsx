@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import { ICoffee, useCoffees } from "../service/coffees";
+import { Link } from "react-router-dom";
 
 interface coffee {
 	coffee: ICoffee;
@@ -17,8 +18,8 @@ export default function CoffeeCard({ coffee }: coffee) {
 					<img src={img} alt={name} />
 				</div>
 				<div className="flex gap-1 flex-wrap justify-center ">
-					{tags.map((item, index) => (
-						<div className="bg-yellow-light rounded-full px-2 py-1" key={index}>
+					{tags.map(item => (
+						<div className="bg-yellow-light rounded-full px-2 py-1" key={item}>
 							<p className="text-yellow-dark font-bold text-[10px] uppercase font-Roboto">
 								{item}
 							</p>
@@ -45,9 +46,13 @@ export default function CoffeeCard({ coffee }: coffee) {
 							<Plus size={14} />
 						</button>
 					</div>
-					<div className="bg-purple-dark text-card p-2 rounded-md flex justify-center items-center">
-						<ShoppingCart size={22} />
-					</div>
+					<Link to="/checkout">
+						<button onClick={() => updateCoffee(id, true)}>
+							<div className="bg-purple-dark text-card p-2 rounded-md flex justify-center items-center">
+								<ShoppingCart size={22} />
+							</div>
+						</button>
+					</Link>
 				</div>
 			</div>
 		</div>
